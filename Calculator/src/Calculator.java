@@ -12,6 +12,7 @@ public class Calculator implements ActionListener {
 
 	JLabel displayLabel;
 
+	JButton[] numericals = new JButton[10];
 	JButton sevenButton;
 	JButton eightButton;
 	JButton nineButton;
@@ -58,36 +59,30 @@ public class Calculator implements ActionListener {
 
 		jf.add(displayLabel);
 
-		// Define 7
-		sevenButton = new JButton("7");
-		sevenButton.setBounds(64, 161, 57, 57);
-		sevenButton.setBackground(Color.LIGHT_GRAY);
-		sevenButton.setForeground(Color.DARK_GRAY);
-		sevenButton.addActionListener(this);
-		sevenButton.setFont(new Font("Arial", Font.PLAIN, 30));
+		int x = 64;
+		int y = 161;
 
-		jf.add(sevenButton);
+		final int SIZE = 57;
 
-		// Define 8
-		eightButton = new JButton("8");
-		eightButton.setBounds(159, 161, 57, 57);
-		eightButton.setBackground(Color.LIGHT_GRAY);
-		eightButton.setForeground(Color.DARK_GRAY);
-		eightButton.addActionListener(this);
-		eightButton.setFont(new Font("Arial", Font.PLAIN, 30));
+		for (int i = 0; i < numericals.length; ++i) {
+			numericals[i] = new JButton("" + i);
+			numericals[i].setBounds(x, y, SIZE, SIZE);
+			numericals[i].setBackground(Color.LIGHT_GRAY);
+			numericals[i].setForeground(Color.DARK_GRAY);
+			numericals[i].addActionListener(this);
+			numericals[i].setFont(new Font("Arial", Font.PLAIN, 30));
 
-		jf.add(eightButton);
+			jf.add(numericals[i]);
 
-		// Define 9
-		nineButton = new JButton("9");
-		nineButton.setBounds(254, 161, 57, 57);
-		nineButton.setBackground(Color.LIGHT_GRAY);
-		nineButton.setForeground(Color.DARK_GRAY);
-		nineButton.addActionListener(this);
-		nineButton.setFont(new Font("Arial", Font.PLAIN, 30));
+			// condition i % 3
+			if (i % 3 != 0) {
+				x += (i + 1) * 95;
+			} else {
+				x = 161;
+				y += 95;
+			}
 
-		jf.add(nineButton);
-
+		}
 		// Define '/'
 		devideButton = new JButton("/");
 		devideButton.setBounds(349, 161, 57, 57);
@@ -106,36 +101,6 @@ public class Calculator implements ActionListener {
 
 		jf.add(clearButton);
 
-		// Define 4
-		fourButton = new JButton("4");
-		fourButton.setBounds(64, 256, 57, 57);
-		fourButton.setBackground(Color.LIGHT_GRAY);
-		fourButton.setForeground(Color.DARK_GRAY);
-		fourButton.addActionListener(this);
-		fourButton.setFont(new Font("Arial", Font.PLAIN, 30));
-
-		jf.add(fourButton);
-
-		// Define 5
-		fiveButton = new JButton("5");
-		fiveButton.setBounds(159, 256, 57, 57);
-		fiveButton.setBackground(Color.LIGHT_GRAY);
-		fiveButton.setForeground(Color.DARK_GRAY);
-		fiveButton.addActionListener(this);
-		fiveButton.setFont(new Font("Arial", Font.PLAIN, 30));
-
-		jf.add(fiveButton);
-
-		// Define 6
-		sixButton = new JButton("6");
-		sixButton.setBounds(254, 256, 57, 57);
-		sixButton.setBackground(Color.LIGHT_GRAY);
-		sixButton.setForeground(Color.DARK_GRAY);
-		sixButton.addActionListener(this);
-		sixButton.setFont(new Font("Arial", Font.PLAIN, 30));
-
-		jf.add(sixButton);
-
 		// Define x
 		multiplyButton = new JButton("x");
 		multiplyButton.setBounds(349, 256, 57, 57);
@@ -153,36 +118,6 @@ public class Calculator implements ActionListener {
 		squareButton.setFont(new Font("Arial", Font.BOLD, 15));
 
 		jf.add(squareButton);
-
-		// Define 1
-		oneButton = new JButton("1");
-		oneButton.setBounds(64, 351, 57, 57);
-		oneButton.setBackground(Color.LIGHT_GRAY);
-		oneButton.setForeground(Color.DARK_GRAY);
-		oneButton.addActionListener(this);
-		oneButton.setFont(new Font("Arial", Font.PLAIN, 30));
-
-		jf.add(oneButton);
-
-		// Define 2
-		twoButton = new JButton("2");
-		twoButton.setBounds(159, 351, 57, 57);
-		twoButton.setBackground(Color.LIGHT_GRAY);
-		twoButton.setForeground(Color.DARK_GRAY);
-		twoButton.addActionListener(this);
-		twoButton.setFont(new Font("Arial", Font.PLAIN, 30));
-
-		jf.add(twoButton);
-
-		// Define 3
-		threeButton = new JButton("3");
-		threeButton.setBounds(254, 351, 57, 57);
-		threeButton.setBackground(Color.LIGHT_GRAY);
-		threeButton.setForeground(Color.DARK_GRAY);
-		threeButton.addActionListener(this);
-		threeButton.setFont(new Font("Arial", Font.PLAIN, 30));
-
-		jf.add(threeButton);
 
 		// Define '-'
 		minusButton = new JButton("-");
