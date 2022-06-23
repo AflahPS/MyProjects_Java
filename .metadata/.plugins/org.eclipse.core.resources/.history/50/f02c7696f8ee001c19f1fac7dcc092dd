@@ -1,0 +1,11 @@
+
+public class Triangle extends Shapes{
+
+	@Override
+	public void render() {
+		System.out.println("Triangle has "+super.no_of_corners+" corners");
+	}
+	
+	
+
+}

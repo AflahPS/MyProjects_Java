@@ -1,0 +1,15 @@
+
+public class Cat extends AbAnimal {
+
+	public void display(String name, int age) {
+
+		System.out.println("Name is :" + name);
+		System.out.println("Age is :" + name);
+
+	}
+
+	public void Walk() {
+		System.out.println("Cat Walks in 4 legs");
+
+	}
+}

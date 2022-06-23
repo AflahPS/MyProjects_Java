@@ -1,0 +1,14 @@
+
+public class Constr_main {
+
+	public static void main(String ar[]) {
+		
+		ConstrClass c=new ConstrClass();
+		c.calc(10, 20);
+		
+		
+	
+	
+	
+	}
+}

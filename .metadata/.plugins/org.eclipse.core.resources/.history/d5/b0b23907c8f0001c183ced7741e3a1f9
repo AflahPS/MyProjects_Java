@@ -1,0 +1,32 @@
+import java.awt.Color;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+public class Calculator {
+
+	public Calculator() {
+		
+		JFrame jf=new JFrame();
+		jf.setLayout(null);
+		jf.setBounds(100, 100, 567, 567);
+		
+		JLabel displayLabel=new JLabel("HELLO !  ");
+		displayLabel.setBounds(66, 28, 435, 76);
+		displayLabel.setForeground(Color.BLUE);
+		displayLabel.setBackground(Color.lightGray);
+	
+		displayLabel.setOpaque(true);
+		displayLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+		
+		jf.add(displayLabel);
+		
+		jf.setVisible(true);
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+public static void main(String[] args) {
+	new Calculator();
+}
+}

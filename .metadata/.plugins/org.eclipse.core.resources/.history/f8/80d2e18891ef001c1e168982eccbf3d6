@@ -1,0 +1,15 @@
+
+public class Display {
+
+	
+
+	Display() {
+	Triangle t1=new Triangle();
+	t1.render();
+	
+		
+		
+
+	}
+
+}

@@ -1,0 +1,10 @@
+
+public class FoodMain {
+
+	public static void main(String[] args) {
+		
+		LimeJuice l=new LimeJuice();
+		l.Taste();
+	}
+	
+}

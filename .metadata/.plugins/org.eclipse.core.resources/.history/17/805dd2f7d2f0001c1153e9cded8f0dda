@@ -1,0 +1,148 @@
+import java.awt.Color;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
+public class Calculator {
+
+	public Calculator() {
+
+		JFrame jf = new JFrame();
+		jf.setLayout(null);
+		jf.setBounds(100, 100, 567, 567);
+	
+		JLabel displayLabel = new JLabel("HELLO");
+		displayLabel.setBounds(64, 28, 435, 76);
+		displayLabel.setForeground(Color.BLUE);
+		displayLabel.setBackground(Color.lightGray);
+
+		displayLabel.setOpaque(true);
+		displayLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+
+		jf.add(displayLabel);
+		
+		JButton sevenButton=new JButton("7");
+		sevenButton.setBounds(64, 161, 57, 57);
+		
+		jf.add(sevenButton);
+		
+		JButton eightButton=new JButton("8");
+		eightButton.setBounds(159, 161, 57, 57);
+		
+		jf.add(eightButton);
+		
+		JButton nineButton=new JButton("9");
+		nineButton.setBounds(254, 161, 57, 57);
+		
+		jf.add(nineButton);
+		
+		JButton devideButton=new JButton("/");
+		devideButton.setBounds(349, 161, 57, 57);
+		devideButton.setBackground(Color.cyan);
+
+		
+		jf.add(devideButton);
+		
+		JButton clearButton=new JButton("CLR");
+		clearButton.setBounds(444, 161, 57, 57);
+		clearButton.setBackground(Color.red);
+		
+		jf.add(clearButton);
+		
+		JButton fourButton=new JButton("4");
+		fourButton.setBounds(64, 256, 57, 57);
+		
+		jf.add(fourButton);
+		
+		JButton fiveButton=new JButton("5");
+		fiveButton.setBounds(159, 256, 57, 57);
+		
+		jf.add(fiveButton);
+		
+		JButton sixButton=new JButton("6");
+		sixButton.setBounds(254, 256, 57, 57);
+		
+		jf.add (sixButton);
+		
+		JButton multiplyButton=new JButton("X");
+		multiplyButton.setBounds(349, 256, 57, 57);
+		multiplyButton.setBackground(Color.cyan);
+		
+		jf.add(multiplyButton);
+		
+		JButton squareButton=new JButton("x\u00b2");
+		squareButton.setBounds(444, 256, 57, 57);
+		squareButton.setBackground(Color.cyan);
+		
+		jf.add(squareButton);
+		
+		JButton oneButton=new JButton("1");
+		oneButton.setBounds(64, 351, 57, 57);
+		
+		jf.add(oneButton);
+		
+		JButton twoButton=new JButton("2");
+		twoButton.setBounds(159, 351, 57, 57);
+		
+		jf.add(twoButton);
+		
+		JButton threeButton=new JButton("3");
+		threeButton.setBounds(254, 351, 57, 57);
+		
+		jf.add(threeButton);
+		
+		JButton minusButton=new JButton("-");
+		minusButton.setBounds(349, 351, 57, 57);
+		minusButton.setBackground(Color.cyan);
+		
+		jf.add(minusButton);
+		
+		JButton squareRootButton=new JButton("\u221ax");
+		squareRootButton.setBounds(444, 351, 57, 57);
+		squareRootButton.setBackground(Color.cyan);
+		
+		jf.add(squareRootButton);
+		
+		JButton dotButton=new JButton(".");
+		dotButton.setBounds(64, 446, 57, 57);
+		
+		jf.add(dotButton);
+		
+		JButton zeroButton=new JButton("0");
+		zeroButton.setBounds(159, 446, 57, 57);
+		
+		jf.add(zeroButton);
+		
+		JButton equalButton=new JButton("=");
+		equalButton.setBounds(254, 446, 57, 57);
+		equalButton.setBackground(Color.cyan);
+		
+		
+		jf.add(equalButton);
+		
+		JButton plusButton=new JButton("+");
+		plusButton.setBounds(349, 446, 57, 57);
+		plusButton.setBackground(Color.cyan);
+		
+		jf.add(plusButton);
+		
+		JButton oneByButton=new JButton("1/x");
+		oneByButton.setBounds(444, 446, 57, 57);
+		oneByButton.setBackground(Color.cyan);
+		
+		jf.add(oneByButton);
+		
+		
+		
+		
+		
+		jf.setVisible(true);
+		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	public static void main(String[] args) {
+		new Calculator();
+	}
+}

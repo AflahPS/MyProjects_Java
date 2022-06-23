@@ -1,0 +1,8 @@
+
+public abstract class AbAnimal {
+
+	String name;
+	int age;
+	
+	abstract void Walk();
+}

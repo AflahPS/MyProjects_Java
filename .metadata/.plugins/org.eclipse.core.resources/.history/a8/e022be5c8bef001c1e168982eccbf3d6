@@ -1,0 +1,11 @@
+
+public class Display {
+	
+	Display(){
+		LimeJuice l=new LimeJuice();
+		l.Taste();
+		Biriyani b=new Biriyani();
+		b.Taste();
+	}
+
+}

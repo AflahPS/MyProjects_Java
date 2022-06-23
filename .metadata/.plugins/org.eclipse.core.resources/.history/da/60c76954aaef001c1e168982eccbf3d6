@@ -1,0 +1,24 @@
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		Sample s1=new Sample();
+		s1.start();
+		
+		Sample s2=new Sample();
+		s2.start();
+				
+		Sample s3=new Sample();
+		s3.start();
+		
+		Sample s4=new Sample();
+		s4.start();
+		
+		Sample s5=new Sample();
+		s5.start();
+		
+		
+	}
+
+}

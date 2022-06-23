@@ -1,0 +1,19 @@
+
+public class ConstrClass {
+
+	int a=200,b=50,sum;
+	
+	int calc(int a,int b) {
+		sum = a+b;
+		System.out.println("Calc() returned: "+sum);
+		return sum;
+		
+	}
+	ConstrClass(int a, int b){
+		
+		System.out.println("Contructor done !!!"+this.calc(a,b));
+	
+	}
+	
+	
+}

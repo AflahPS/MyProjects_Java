@@ -1,0 +1,20 @@
+
+public class ConstrClass {
+
+	int a=200,b=50,sum;
+	
+	int calc(int a,int b) {
+		this.a=a;
+		this.b=b;
+		sum = a+b;
+		return sum;
+		
+	}
+	ConstrClass(){
+		
+		System.out.println("Contructor done !!!"+this.calc(a,b));
+	
+	}
+	
+	
+}
