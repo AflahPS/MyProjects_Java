@@ -1,9 +1,0 @@
-
-public class Square extends Shapes {
-
-	public void render() {
-
-		System.out.println("Square has 4 corners");
-	}
-
-}

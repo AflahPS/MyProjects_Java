@@ -1,8 +1,0 @@
-
-public class ConstrClass {
-
-	ConstrClass(){
-		System.out.println("Contructor done !!!");
-	}
-	
-}

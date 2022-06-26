@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,7 +13,6 @@ public class Calculator implements ActionListener {
 
 	JLabel displayLabel;
 
-	JButton[] numericals = new JButton[10];
 	JButton sevenButton;
 	JButton eightButton;
 	JButton nineButton;
@@ -34,19 +34,58 @@ public class Calculator implements ActionListener {
 	JButton plusButton;
 	JButton oneByButton;
 
+	JButton[] buttons = new JButton[20];
+	String[] numbers = {
+			"0",
+			"1",
+			"2",
+			"3",
+			"4",
+			"5",
+			"6",
+			"7",
+			"8",
+			"9",
+	};
+
+	String[][] buttonLabel = {
+			{ "7", "8", "9", "/", "C" },
+			{ "4", "5", "6", "x", "x\\u00b2" },
+			{ "1", "2", "3", "-", "\\u221ax" },
+			{ ".", "0", "=", "+", "1/x" }
+	};
+	JFrame jf = new JFrame();
+
 	boolean isOperatorClicked = false;
 	boolean isDotPressed = false;
 	String currentOperator = "null";
 	String oldValue = "0";
 	String newValue = "0";
 	double result = 0;
+	final int SIZE = 57;
+	int x = 64;
+	int y = 161;
+	int offset = 95;
+	int fontSize =12;
 
 	public Calculator() {
 
-		JFrame jf = new JFrame();
 		jf.setLayout(null);
 		jf.setBounds(100, 100, 567, 567);
 		jf.getContentPane().setBackground(Color.DARK_GRAY);
+		int row = 0;
+		for (int i = 0; i < buttonLabel[0].length; ++i) {
+			for (int j = 0; j < buttonLabel.length; ++j) {
+				String label = buttonLabel[j][i];
+				buttons[row] = new JButton(label);
+				buttons[row].setBounds(x + i * offset, y + j * offset, SIZE, SIZE);
+				buttons[row].setBackground(Arrays.asList(numbers).contains(label) ? Color.PINK : Color.LIGHT_GRAY);
+				buttons[row].addActionListener(this);
+				buttons[row].setFont(new Font("Arial", Font.PLAIN, fontSize));
+				jf.add(buttons[row]);
+				row++;
+			}
+		}
 
 		displayLabel = new JLabel();
 		displayLabel.setBounds(64, 28, 435, 76);
@@ -58,131 +97,6 @@ public class Calculator implements ActionListener {
 		displayLabel.setHorizontalAlignment(SwingConstants.RIGHT);
 
 		jf.add(displayLabel);
-
-		int x = 64;
-		int y = 161;
-
-		final int SIZE = 57;
-
-		for (int i = 0; i < numericals.length; ++i) {
-			numericals[i] = new JButton("" + i);
-			numericals[i].setBounds(x, y, SIZE, SIZE);
-			numericals[i].setBackground(Color.LIGHT_GRAY);
-			numericals[i].setForeground(Color.DARK_GRAY);
-			numericals[i].addActionListener(this);
-			numericals[i].setFont(new Font("Arial", Font.PLAIN, 30));
-
-			jf.add(numericals[i]);
-
-			// condition i % 3
-			if (i % 3 != 0) {
-				x += (i + 1) * 95;
-			} else {
-				x = 161;
-				y += 95;
-			}
-
-		}
-		// Define '/'
-		devideButton = new JButton("/");
-		devideButton.setBounds(349, 161, 57, 57);
-		devideButton.setBackground(Color.PINK);
-		devideButton.addActionListener(this);
-		devideButton.setFont(new Font("Arial", Font.PLAIN, 30));
-
-		jf.add(devideButton);
-
-		// Define CLear
-		clearButton = new JButton("C");
-		clearButton.setBounds(444, 161, 57, 57);
-		clearButton.setBackground(Color.white);
-		clearButton.addActionListener(this);
-		clearButton.setFont(new Font("Arial", Font.PLAIN, 30));
-
-		jf.add(clearButton);
-
-		// Define x
-		multiplyButton = new JButton("x");
-		multiplyButton.setBounds(349, 256, 57, 57);
-		multiplyButton.setBackground(Color.pink);
-		multiplyButton.addActionListener(this);
-		multiplyButton.setFont(new Font("Arial", Font.PLAIN, 30));
-
-		jf.add(multiplyButton);
-
-		// Define Square
-		squareButton = new JButton("x\u00b2");
-		squareButton.setBounds(444, 256, 57, 57);
-		squareButton.setBackground(Color.pink);
-		squareButton.addActionListener(this);
-		squareButton.setFont(new Font("Arial", Font.BOLD, 15));
-
-		jf.add(squareButton);
-
-		// Define '-'
-		minusButton = new JButton("-");
-		minusButton.setBounds(349, 351, 57, 57);
-		minusButton.setBackground(Color.pink);
-		minusButton.addActionListener(this);
-		minusButton.setFont(new Font("Arial", Font.PLAIN, 30));
-
-		jf.add(minusButton);
-
-		// Define SquareRoot
-		squareRootButton = new JButton("\u221ax");
-		squareRootButton.setBounds(444, 351, 57, 57);
-		squareRootButton.setBackground(Color.pink);
-		squareRootButton.addActionListener(this);
-		squareRootButton.setFont(new Font("Arial", Font.BOLD, 15));
-
-		jf.add(squareRootButton);
-
-		// Define dot
-		dotButton = new JButton(".");
-		dotButton.setBounds(64, 446, 57, 57);
-		dotButton.setBackground(Color.LIGHT_GRAY);
-		dotButton.setForeground(Color.DARK_GRAY);
-		dotButton.addActionListener(this);
-		dotButton.setFont(new Font("Arial", Font.PLAIN, 30));
-
-		jf.add(dotButton);
-
-		// Define 0
-		zeroButton = new JButton("0");
-		zeroButton.setBounds(159, 446, 57, 57);
-		zeroButton.setBackground(Color.LIGHT_GRAY);
-		zeroButton.setForeground(Color.DARK_GRAY);
-		zeroButton.addActionListener(this);
-		zeroButton.setFont(new Font("Arial", Font.PLAIN, 30));
-
-		jf.add(zeroButton);
-
-		// Define =
-		equalButton = new JButton("=");
-		equalButton.setBounds(254, 446, 57, 57);
-		equalButton.setBackground(Color.pink);
-		equalButton.addActionListener(this);
-		equalButton.setFont(new Font("Arial", Font.PLAIN, 30));
-
-		jf.add(equalButton);
-
-		// Define +
-		plusButton = new JButton("+");
-		plusButton.setBounds(349, 446, 57, 57);
-		plusButton.setBackground(Color.pink);
-		plusButton.addActionListener(this);
-		plusButton.setFont(new Font("Arial", Font.PLAIN, 30));
-
-		jf.add(plusButton);
-
-		// Define OneBy
-		oneByButton = new JButton("1/x");
-		oneByButton.setBounds(444, 446, 57, 57);
-		oneByButton.setBackground(Color.pink);
-		oneByButton.addActionListener(this);
-		oneByButton.setFont(new Font("Arial", Font.BOLD, 15));
-
-		jf.add(oneByButton);
 
 		jf.setVisible(true);
 		jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

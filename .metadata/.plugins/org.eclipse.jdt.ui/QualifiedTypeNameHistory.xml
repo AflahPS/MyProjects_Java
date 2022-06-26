@@ -11,4 +11,5 @@
     <fullyQualifiedTypeName name="java.awt.Font"/>
     <fullyQualifiedTypeName name="java.awt.Color"/>
     <fullyQualifiedTypeName name="Calculator"/>
+    <fullyQualifiedTypeName name="javax.swing.JButton"/>
 </qualifiedTypeNameHistroy>
