@@ -3,6 +3,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
+import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -12,27 +13,6 @@ import javax.swing.SwingConstants;
 public class Calculator implements ActionListener {
 
 	JLabel displayLabel;
-
-	JButton sevenButton;
-	JButton eightButton;
-	JButton nineButton;
-	JButton devideButton;
-	JButton clearButton;
-	JButton fourButton;
-	JButton fiveButton;
-	JButton sixButton;
-	JButton multiplyButton;
-	JButton squareButton;
-	JButton oneButton;
-	JButton twoButton;
-	JButton threeButton;
-	JButton minusButton;
-	JButton squareRootButton;
-	JButton dotButton;
-	JButton zeroButton;
-	JButton equalButton;
-	JButton plusButton;
-	JButton oneByButton;
 
 	JButton[] buttons = new JButton[20];
 	String[] numbers = {
@@ -50,10 +30,13 @@ public class Calculator implements ActionListener {
 
 	String[][] buttonLabel = {
 			{ "7", "8", "9", "/", "C" },
-			{ "4", "5", "6", "x", "x\\u00b2" },
-			{ "1", "2", "3", "-", "\\u221ax" },
+			{ "4", "5", "6", "x", "x\u00b2" },
+			{ "1", "2", "3", "-", "x\u221ax" },
 			{ ".", "0", "=", "+", "1/x" }
 	};
+	
+	HashMap<String, String> buttonDict = new HashMap<>();
+	
 	JFrame jf = new JFrame();
 
 	boolean isOperatorClicked = false;
@@ -66,13 +49,37 @@ public class Calculator implements ActionListener {
 	int x = 64;
 	int y = 161;
 	int offset = 95;
-	int fontSize =12;
+	int fontSize =22;
 
 	public Calculator() {
 
 		jf.setLayout(null);
 		jf.setBounds(100, 100, 567, 567);
 		jf.getContentPane().setBackground(Color.DARK_GRAY);
+		
+		buttonDict.put("sevenButton",buttonLabel[0][0]);
+		buttonDict.put("eightButton",buttonLabel[0][1]);
+		buttonDict.put("nineButton",buttonLabel[0][2]);
+		buttonDict.put("devideButton",buttonLabel[0][3]);
+		buttonDict.put("clearutton",buttonLabel[0][4]);
+		buttonDict.put("fourButton",buttonLabel[1][0]);
+		buttonDict.put("fiveButton",buttonLabel[1][1]);
+		buttonDict.put("sixButton",buttonLabel[1][2]);
+		buttonDict.put("multiplyButton",buttonLabel[1][3]);
+		buttonDict.put("squareButton",buttonLabel[1][4]);
+		buttonDict.put("oneButton",buttonLabel[2][0]);
+		buttonDict.put("twoButton",buttonLabel[2][1]);
+		buttonDict.put("threeButton",buttonLabel[2][2]);
+		buttonDict.put("minusButton",buttonLabel[2][3]);
+		buttonDict.put("squareRootButton",buttonLabel[2][4]);
+		buttonDict.put("dotButton",buttonLabel[3][0]);
+		buttonDict.put("zeroButton",buttonLabel[3][1]);
+		buttonDict.put("equalButton",buttonLabel[3][2]);
+		buttonDict.put("plusButton",buttonLabel[3][3]);
+		buttonDict.put("oneByButton",buttonLabel[3][4]);
+				
+		
+		
 		int row = 0;
 		for (int i = 0; i < buttonLabel[0].length; ++i) {
 			for (int j = 0; j < buttonLabel.length; ++j) {
@@ -112,82 +119,57 @@ public class Calculator implements ActionListener {
 		if (isOperatorClicked) {
 			isDotPressed = false;
 		}
-
-		// 7
-		if (e.getSource() == sevenButton) {
+		
+		for (int i=1;i<10;i++) {
+			if (e.getSource() ==i+"" )
+				if (isOperatorClicked) {
+					displayLabel.setText(""+i);
+					isOperatorClicked = false;
+				} else {
+					displayLabel.setText(displayLabel.getText() + i);
+				}
+		}
+		
+		
+		if (e.getSource() == buttonDict.get("sevenButton"));
 			if (isOperatorClicked) {
 				displayLabel.setText("7");
 				isOperatorClicked = false;
 			} else {
 				displayLabel.setText(displayLabel.getText() + "7");
 			}
-		}
-		// 8
-		else if (e.getSource() == eightButton) {
+			
+		if (e.getSource() == buttonDict.get("eightButton"));
 			if (isOperatorClicked) {
 				displayLabel.setText("8");
 				isOperatorClicked = false;
 			} else {
 				displayLabel.setText(displayLabel.getText() + "8");
 			}
-		}
-		// 9
-		else if (e.getSource() == nineButton) {
-			if (isOperatorClicked) {
-				displayLabel.setText("9");
-				isOperatorClicked = false;
-			} else {
-				displayLabel.setText(displayLabel.getText() + "9");
-			}
-		}
+
+		
 		// division
-		else if (e.getSource() == devideButton) {
+		 if (e.getSource() == buttonDict.get("devideButton")) {
 			isOperatorClicked = true;
 			currentOperator = "/";
 			oldValue = displayLabel.getText();
 
 		}
 		// clear
-		else if (e.getSource() == clearButton) {
+		else if (e.getSource() == buttonDict.get("clearButton")){
 			displayLabel.setText("");
 			isOperatorClicked = false;
 		}
-		// 4
-		else if (e.getSource() == fourButton) {
-			if (isOperatorClicked) {
-				displayLabel.setText("4");
-				isOperatorClicked = false;
-			} else {
-				displayLabel.setText(displayLabel.getText() + "4");
-			}
-		}
-		// 5
-		else if (e.getSource() == fiveButton) {
-			if (isOperatorClicked) {
-				displayLabel.setText("5");
-				isOperatorClicked = false;
-			} else {
-				displayLabel.setText(displayLabel.getText() + "5");
-			}
-		}
-		// 6
-		else if (e.getSource() == sixButton) {
-			if (isOperatorClicked) {
-				displayLabel.setText("6");
-				isOperatorClicked = false;
-			} else {
-				displayLabel.setText(displayLabel.getText() + "6");
-			}
-		}
+		
 		// multiply
-		else if (e.getSource() == multiplyButton) {
+		else if (e.getSource() == buttonDict.get("multiplyButton")) {
 			isOperatorClicked = true;
 			currentOperator = "x";
 			oldValue = displayLabel.getText();
 
 		}
 		// Square
-		else if (e.getSource() == squareButton) {
+		else if (e.getSource() == buttonDict.get("squareButton")) {
 			isOperatorClicked = true;
 			oldValue = displayLabel.getText();
 			result = Math.pow(Float.parseFloat(oldValue), 2);
@@ -195,41 +177,15 @@ public class Calculator implements ActionListener {
 			oldValue = "0";
 
 		}
-		// 1
-		else if (e.getSource() == oneButton) {
-			if (isOperatorClicked) {
-				displayLabel.setText("1");
-				isOperatorClicked = false;
-			} else {
-				displayLabel.setText(displayLabel.getText() + "1");
-			}
-		}
-		// 2
-		else if (e.getSource() == twoButton) {
-			if (isOperatorClicked) {
-				displayLabel.setText("2");
-				isOperatorClicked = false;
-			} else {
-				displayLabel.setText(displayLabel.getText() + "2");
-			}
-		}
-		// 3
-		else if (e.getSource() == threeButton) {
-			if (isOperatorClicked) {
-				displayLabel.setText("3");
-				isOperatorClicked = false;
-			} else {
-				displayLabel.setText(displayLabel.getText() + "3");
-			}
-		}
+		
 		// Subtraction
-		else if (e.getSource() == minusButton) {
+		else if (e.getSource() == buttonDict.get("minusButton")) {
 			isOperatorClicked = true;
 			currentOperator = "-";
 			oldValue = displayLabel.getText();
 		}
 		// SquareRoot
-		else if (e.getSource() == squareRootButton) {
+		else if (e.getSource() == buttonDict.get("squareRootButton")) {
 			isOperatorClicked = true;
 			oldValue = displayLabel.getText();
 			result = Math.pow(Float.parseFloat(oldValue), .5);
@@ -237,7 +193,7 @@ public class Calculator implements ActionListener {
 			oldValue = "0";
 		}
 		// Dot
-		else if (e.getSource() == dotButton) {
+		else if (e.getSource() == buttonDict.get("dotButton")) {
 			if (isOperatorClicked) {
 				displayLabel.setText(".");
 				isDotPressed = true;
@@ -254,7 +210,7 @@ public class Calculator implements ActionListener {
 			}
 		}
 		// Zero
-		else if (e.getSource() == zeroButton) {
+		else if (e.getSource() == buttonDict.get("zeroButton")) {
 			if (isOperatorClicked) {
 				displayLabel.setText("0");
 			} else {
@@ -269,13 +225,13 @@ public class Calculator implements ActionListener {
 		}
 
 		// Addition
-		else if (e.getSource() == plusButton) {
+		else if (e.getSource() == buttonDict.get("plusButton")) {
 			isOperatorClicked = true;
 			currentOperator = "+";
 			oldValue = displayLabel.getText();
 		}
 		// OneBy
-		else if (e.getSource() == oneByButton) {
+		else if (e.getSource() == buttonDict.get("oneByButton")) {
 			isOperatorClicked = true;
 			oldValue = displayLabel.getText();
 			result = 1 / (Float.parseFloat(oldValue));
@@ -284,7 +240,7 @@ public class Calculator implements ActionListener {
 		}
 
 		// Equal
-		else if (e.getSource() == equalButton) {
+		else if (e.getSource() == buttonDict.get("equalButton")) {
 			if (currentOperator == "/") {
 				newValue = displayLabel.getText();
 				result = Float.parseFloat(oldValue) / Float.parseFloat(newValue);
