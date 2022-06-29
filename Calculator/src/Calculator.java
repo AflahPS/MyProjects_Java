@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Set;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,28 +16,20 @@ public class Calculator implements ActionListener {
 	JLabel displayLabel;
 
 	JButton[] buttons = new JButton[20];
-	String[] numbers = {
-			"0",
-			"1",
-			"2",
-			"3",
-			"4",
-			"5",
-			"6",
-			"7",
-			"8",
-			"9",
-	};
+	
+	
+	
+	String[] numbers = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
-	String[][] buttonLabel = {
-			{ "7", "8", "9", "/", "C" },
-			{ "4", "5", "6", "x", "x\u00b2" },
-			{ "1", "2", "3", "-", "x\u221ax" },
-			{ ".", "0", "=", "+", "1/x" }
-	};
+		
+	String[][] buttonLabel = { { "7", "4", "1", "."}, { "8", "5", "2", "0"},
+			{ "9", "6", "3", "="},{"/","x","-","+"}, { "C", "x\u00b2", "x\u221ax", "1/x" } };
+
+	
 	
 	HashMap<String, String> buttonDict = new HashMap<>();
 	
+
 	JFrame jf = new JFrame();
 
 	boolean isOperatorClicked = false;
@@ -49,41 +42,46 @@ public class Calculator implements ActionListener {
 	int x = 64;
 	int y = 161;
 	int offset = 95;
-	int fontSize =22;
+	int fontSize = 22;
 
 	public Calculator() {
 
 		jf.setLayout(null);
 		jf.setBounds(100, 100, 567, 567);
 		jf.getContentPane().setBackground(Color.DARK_GRAY);
+
+		buttonDict.put("sevenButton", buttonLabel[0][0]);
+		buttonDict.put("fourButton", buttonLabel[0][1]);
+		buttonDict.put("oneButton", buttonLabel[0][2]);
+		buttonDict.put("dotButton", buttonLabel[0][3]);
+		buttonDict.put("eightButton", buttonLabel[1][0]);
+		buttonDict.put("fiveButton", buttonLabel[1][1]);
+		buttonDict.put("twoButton", buttonLabel[1][2]);
+		buttonDict.put("zeroButton", buttonLabel[1][3]);
+		buttonDict.put("nineButton", buttonLabel[2][0]);
+		buttonDict.put("sixButton", buttonLabel[2][1]);
+		buttonDict.put("threeButton", buttonLabel[2][2]);
+		buttonDict.put("equalButton", buttonLabel[2][3]);
+		buttonDict.put("devideButton", buttonLabel[3][0]);
+		buttonDict.put("multiplyButton", buttonLabel[3][1]);
+		buttonDict.put("minusButton", buttonLabel[3][2]);
+		buttonDict.put("plusButton", buttonLabel[3][3]);
+		buttonDict.put("clearButton", buttonLabel[4][0]);
+		buttonDict.put("squareButton", buttonLabel[4][1]);
+		buttonDict.put("squareRootButton", buttonLabel[4][2]);
+		buttonDict.put("oneByButton", buttonLabel[4][3]);
+	
 		
-		buttonDict.put("sevenButton",buttonLabel[0][0]);
-		buttonDict.put("eightButton",buttonLabel[0][1]);
-		buttonDict.put("nineButton",buttonLabel[0][2]);
-		buttonDict.put("devideButton",buttonLabel[0][3]);
-		buttonDict.put("clearutton",buttonLabel[0][4]);
-		buttonDict.put("fourButton",buttonLabel[1][0]);
-		buttonDict.put("fiveButton",buttonLabel[1][1]);
-		buttonDict.put("sixButton",buttonLabel[1][2]);
-		buttonDict.put("multiplyButton",buttonLabel[1][3]);
-		buttonDict.put("squareButton",buttonLabel[1][4]);
-		buttonDict.put("oneButton",buttonLabel[2][0]);
-		buttonDict.put("twoButton",buttonLabel[2][1]);
-		buttonDict.put("threeButton",buttonLabel[2][2]);
-		buttonDict.put("minusButton",buttonLabel[2][3]);
-		buttonDict.put("squareRootButton",buttonLabel[2][4]);
-		buttonDict.put("dotButton",buttonLabel[3][0]);
-		buttonDict.put("zeroButton",buttonLabel[3][1]);
-		buttonDict.put("equalButton",buttonLabel[3][2]);
-		buttonDict.put("plusButton",buttonLabel[3][3]);
-		buttonDict.put("oneByButton",buttonLabel[3][4]);
-				
+		
+	
+	
 		
 		
+
 		int row = 0;
-		for (int i = 0; i < buttonLabel[0].length; ++i) {
-			for (int j = 0; j < buttonLabel.length; ++j) {
-				String label = buttonLabel[j][i];
+		for (int i = 0; i <5; ++i) {
+			for (int j = 0; j < 4; ++j) {
+				String label = buttonLabel[i][j];
 				buttons[row] = new JButton(label);
 				buttons[row].setBounds(x + i * offset, y + j * offset, SIZE, SIZE);
 				buttons[row].setBackground(Arrays.asList(numbers).contains(label) ? Color.PINK : Color.LIGHT_GRAY);
@@ -92,6 +90,9 @@ public class Calculator implements ActionListener {
 				jf.add(buttons[row]);
 				row++;
 			}
+		}
+		if (isOperatorClicked) {
+			isDotPressed = false;
 		}
 
 		displayLabel = new JLabel();
@@ -116,45 +117,35 @@ public class Calculator implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (isOperatorClicked) {
-			isDotPressed = false;
-		}
+		if (e.getSource() ==buttonDict.get("sevenButton")) {
 		
-		for (int i=1;i<10;i++) {
-			if (e.getSource() ==i+"" )
-				if (isOperatorClicked) {
-					displayLabel.setText(""+i);
-					isOperatorClicked = false;
-				} else {
-					displayLabel.setText(displayLabel.getText() + i);
-				}
-		}
-		
-		
-		if (e.getSource() == buttonDict.get("sevenButton"));
 			if (isOperatorClicked) {
 				displayLabel.setText("7");
 				isOperatorClicked = false;
 			} else {
 				displayLabel.setText(displayLabel.getText() + "7");
 			}
+		}
 			
-		if (e.getSource() == buttonDict.get("eightButton"));
+			
+		else if (e.getSource() == buttonDict.get("eightButton")) {
 			if (isOperatorClicked) {
 				displayLabel.setText("8");
 				isOperatorClicked = false;
 			} else {
 				displayLabel.setText(displayLabel.getText() + "8");
 			}
+		}
 
 		
 		// division
-		 if (e.getSource() == buttonDict.get("devideButton")) {
+		if (e.getSource() == buttonDict.get("devideButton")) {
 			isOperatorClicked = true;
 			currentOperator = "/";
 			oldValue = displayLabel.getText();
 
 		}
+		
 		// clear
 		else if (e.getSource() == buttonDict.get("clearButton")){
 			displayLabel.setText("");
