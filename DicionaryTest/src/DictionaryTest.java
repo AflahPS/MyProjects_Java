@@ -14,7 +14,7 @@ public class DictionaryTest {
 		
 		
 		
-		System.out.println(test.get("sevenButton"));
+		System.out.println(test.keySet());
 		
 		
 		

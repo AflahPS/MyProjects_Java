@@ -202,7 +202,8 @@ public class Calculator implements ActionListener {
 					displayLabel.setText(result + "");
 					oldValue = "0";
 					break;
-				} else if (e.getSource() == buttonDict.get(buttonLabel[i][j]) && e.getSource() == buttonDict.get("=")) {
+				} else if (e.getSource() == buttonDict.get(buttonLabel[i][j]) 
+						&& e.getSource() == buttonDict.get("=")) {
 					if (currentOperator == "/") {
 						newValue = displayLabel.getText();
 						result = Float.parseFloat(oldValue) / Float.parseFloat(newValue);
