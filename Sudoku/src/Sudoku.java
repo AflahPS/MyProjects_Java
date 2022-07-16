@@ -53,6 +53,30 @@ public class Sudoku implements ActionListener {
                         solverArray[i][j] = 3;
                         continue;
                     }
+                }else if (solverArray[i][j] == 1){
+                    if(solverArray[i][0] != 1 && solverArray[i][1] != 1 && solverArray[i][2] != 1
+                    && solverArray[0][j] != 1 && solverArray[1][j] != 1 && solverArray[2][j] != 1){
+                        continue;
+                    }else{
+                        solverArray[i][j]=0;
+                        j--;
+                    }
+                }else if (solverArray[i][j] == 2){
+                    if(solverArray[i][0] != 2 && solverArray[i][1] != 2 && solverArray[i][2] != 2
+                    && solverArray[0][j] != 2 && solverArray[1][j] != 2 && solverArray[2][j] != 2){
+                        continue;
+                    }else{
+                        solverArray[i][j]=0;
+                        j--;
+                    }
+                }else if (solverArray[i][j] == 3){
+                    if(solverArray[i][0] != 3 && solverArray[i][1] != 3 && solverArray[i][2] != 3
+                    && solverArray[0][j] != 3 && solverArray[1][j] != 3 && solverArray[2][j] != 3){
+                        continue;
+                    }else{
+                        solverArray[i][j]=0;
+                        j--;
+                    }
                 }
             }
         }
@@ -120,6 +144,9 @@ public class Sudoku implements ActionListener {
                     if (Integer.parseInt(fieldLabelDict.get(fieldLabel[i][j]).getText()) > 3
                             || Integer.parseInt(fieldLabelDict.get(fieldLabel[i][j]).getText()) < 0) {
                         fieldLabelDict.get(fieldLabel[i][j]).setText("1-3");
+                        fieldLabelDict.get(fieldLabel[i][j]).setBackground(Color.RED);
+                        label.setText("ENTER A NUMBER BETWEEN 1 AND 3");
+                        label.setBackground(Color.RED);
                         continue;
                     }
                 }
@@ -133,16 +160,21 @@ public class Sudoku implements ActionListener {
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
                     fieldLabelDict.get(fieldLabel[i][j]).setText(solvedArray[i][j]);
+                    fieldLabelDict.get(fieldLabel[i][j]).setBackground(Color.green);
                 }
             }
             label.setText("CONGRATULATION !!!");
+            label.setBackground(Color.green);
         } else if (e.getSource() == resetButton) {
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
                     fieldLabelDict.get(fieldLabel[i][j]).setText("0");
+                    fieldLabelDict.get(fieldLabel[i][j]).setBackground(new Color(0xccccff));
+
                 }
             }
             label.setText("WELCOME TO SUDOKU SOLVER");
+            label.setBackground(new Color(0xcc99ff));
         }
     }
 }
